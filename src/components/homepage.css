@@ -1,0 +1,27 @@
+.divider:after,
+.divider:before {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #eee;
+}
+.h-custom {
+  height: calc(100% - 73px);
+}
+
+.login-card{
+  max-width: 500px !important;
+  max-height: 700px;
+}
+.end-card{
+    margin-top: 15%;
+    background-color: rgba(179, 177, 177, 0.28);
+    height: 15px;
+    align-items: center;
+    
+}
+@media (max-width: 450px) {
+  .h-custom {
+  height: 100%;
+  }
+}
