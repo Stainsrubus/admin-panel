@@ -1,4 +1,4 @@
-import React ,{useContext}from 'react'
+import React ,{useContext,useEffect,useState}from 'react'
 import Tile from './tile'
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
@@ -6,22 +6,38 @@ import { useNavigate } from 'react-router-dom';
 import { UserDataContext } from './context/UserContext';
 import { DashboardDataContext } from './context/DashboardContext';
 import Logout from './hooks/logout';
+import axios from 'axios'
+import { toast } from 'react-toastify';
 
 function dashboard() {
+    let [data,setData]=useState([])
 let {dashboardData}=useContext(DashboardDataContext);
-let {data,setData}=useContext(UserDataContext);
+let {API_URL}=useContext(UserDataContext);
 const navigate = useNavigate();
-
-
-
-
+let logout=Logout();
 
 let handleDelete= (index) =>{
     let newArray=[...data]//deepcopy
     newArray.splice(index,1)
     setData(newArray)
 }
-let logout=Logout();
+//fetching data from api
+const getData=async()=>{
+    try {
+        let res = await axios.get(API_URL)
+        if(res.status===200){
+            toast.success("User data Fetched")
+            setData(res.data)
+        }
+    } catch (error) {
+        toast.error("internal Server Error")
+    }
+}
+useEffect(()=>
+{
+    getData()
+},[]) //useEffect with empty dependency
+
   return <>
     <div className="container-fluid">
 

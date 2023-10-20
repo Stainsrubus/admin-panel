@@ -51,6 +51,16 @@ function sidebar() {
                 </div>
             </li>
 
+            <li className="nav-item">
+    <div className="nav-link">
+       
+       <Link to='/nested-example'>
+        <i className="fas fa-fw fa-wrench"></i>
+        <span style={{color:"white"}}>Nested Example</span>
+       </Link>
+    </div>
+</li>
+
         </ul>
   
   </>}

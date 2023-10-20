@@ -27,7 +27,7 @@ const Edit = ()=>{
     mobile:Yup.string().matches(/^\d{10}$/,'* Invalid Mobile Number').required('* Required'),
     batch:Yup.string()
   })
-
+ 
   const getData = (index)=>{
     let newValues = {...initialValues}
     newValues.name = data[index].name
